@@ -12,7 +12,7 @@ This dependency is valid for Java 11 or higher. To make use of it you can add th
 </dependency>
 ```
 
-The [DemoApplicationTests](./src/test/java/camunda/cloud/testing/demo/DemoApplicationTests) class contains all important tests. 
+The [DemoApplicationTests](./src/test/java/camunda/cloud/testing/demo/DemoApplicationTests.java) class contains all important tests. 
 There you can see: 
 - How to test whether the Deployment succeeds 
 - Check if a process instance has started successfully
