@@ -12,11 +12,8 @@ import io.camunda.zeebe.process.test.assertions.ProcessInstanceAssert;
 import io.camunda.zeebe.process.test.extensions.ZeebeProcessTest;
 import io.camunda.zeebe.process.test.testengine.InMemoryEngine;
 import io.camunda.zeebe.process.test.testengine.RecordStreamSource;
-import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
 
-
-@SpringBootTest
 @ZeebeProcessTest
 public class DemoApplicationTests {
 	private InMemoryEngine engine;
