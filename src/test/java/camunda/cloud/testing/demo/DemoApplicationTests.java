@@ -45,7 +45,7 @@ public class DemoApplicationTests {
 				.join();
 
 		//Then
-		DeploymentAssert assertions = BpmnAssert.assertThat(event);
+		BpmnAssert.assertThat(event);
 	}
 
 	@Test
@@ -66,11 +66,10 @@ public class DemoApplicationTests {
 	}
 
 	@Test
-	public void testJobAssertion() throws InterruptedException {
+	public void testJobAssertion()  {
 		//Given
 		initDeployment();
 		initProcessInstanceStart();
-		Thread.sleep(100);
 
 		//When
 		ActivateJobsResponse response = client.newActivateJobsCommand()
@@ -81,7 +80,7 @@ public class DemoApplicationTests {
 
 		//Then
 		ActivatedJob activatedJob = response.getJobs().get(0);
-		JobAssert assertions = BpmnAssert.assertThat(activatedJob);
+		BpmnAssert.assertThat(activatedJob);
 		client.newCompleteCommand(activatedJob.getKey()).send().join();
 	}
 
@@ -90,7 +89,6 @@ public class DemoApplicationTests {
 		//Given
 		initDeployment();
 		ProcessInstanceAssert instanceAssert = initProcessInstanceStart();
-		Thread.sleep(100);
 
 		//When
 		ActivateJobsResponse response = client.newActivateJobsCommand()
@@ -100,7 +98,7 @@ public class DemoApplicationTests {
 				.join();
 		ActivatedJob activatedJob = response.getJobs().get(0);
 		client.newCompleteCommand(activatedJob.getKey()).send().join();
-		Thread.sleep(100);
+		engine.waitForIdleState();
 
 		//then
 		instanceAssert.isCompleted();
